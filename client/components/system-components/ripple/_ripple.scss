@@ -1,0 +1,68 @@
+@import "./_config";
+
+.ripple-parent  {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
+.ripple-element {
+  position: absolute;
+  background: $ripple-color;
+  border-radius: 50%;
+  opacity: 1;
+  transform: scale(0);
+  z-index: 1000;
+}
+
+.ripple-element.is-reppling {
+  -webkit-animation: ripple $ripple-duration $ripple-timing-function;
+  -o-animation: ripple $ripple-duration $ripple-timing-function;
+  animation: ripple $ripple-duration $ripple-timing-function;
+}
+
+@keyframes ripple {
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(2.5);
+    -ms-transform: scale(2.5);
+    -o-transform: scale(2.5);
+    transform: scale(2.5);
+  }
+}
+@-webkit-keyframes ripple {
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(2.5);
+    -ms-transform: scale(2.5);
+    -o-transform: scale(2.5);
+    transform: scale(2.5);
+  }
+}
+@-moz-keyframes ripple {
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(2.5);
+    -ms-transform: scale(2.5);
+    -o-transform: scale(2.5);
+    transform: scale(2.5);
+  }
+}
+@-ms-keyframes ripple {
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(2.5);
+    -ms-transform: scale(2.5);
+    -o-transform: scale(2.5);
+    transform: scale(2.5);
+  }
+}
+@-o-keyframes ripple {
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(2.5);
+    -ms-transform: scale(2.5);
+    -o-transform: scale(2.5);
+    transform: scale(2.5);
+  }
+}

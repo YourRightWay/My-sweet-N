@@ -7,7 +7,7 @@ import * as apiAction from '../actions/api-action'
 class Article extends Component {
     render() {
         return (
-            <div className="container">
+            <div>
                 <h1>hello article</h1>
             </div>
         );
