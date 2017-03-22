@@ -8,7 +8,7 @@ import * as apiAction from '../actions/api-action'
 
 class Layout extends Component {
     
-    getArticles() {
+    componentDidMount() {
         let { getArticles } = this.props.apiAction;
         getArticles()
     }
@@ -22,9 +22,7 @@ class Layout extends Component {
         return (
             <div>
                 <Header />
-                <h1>Hello app!</h1>
-                <button onClick={::this.getArticles}>получить статьи</button>
-                <button onClick={::this.getArticlesId}>получить статью!</button>
+                { this.props.children }
             </div>
         );
     }

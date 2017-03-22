@@ -12,17 +12,19 @@ export function getArticles() {
 
         dispatch(GET_ARTICLES_REQUEST)
         
-        let url = '/api/get-articles?limit=1&page=2' 
+        let url = '/api/get-articles?limit=10&page=1' 
         
         return callApi(url, {
             method: 'GET'
         }).then((result) => {
             dispatch({ type: ASYNC_DEBUGGER, url: url, response: result })
 
-            // dispatch({
-            //     type: GET_CHANNEL_SUCCESS,
-            //     data: JSON.stringify(result)
-            // })
+            dispatch({
+                type: GET_ARTICLES_SUCCESS,
+                currentPage: result.page,
+                articlesList: result.articles,
+                quantityPages: result.pagesCount
+            })
             
         }).catch((error) => {
             throw new Error(`${url} ${'\n'} ${error}`);
