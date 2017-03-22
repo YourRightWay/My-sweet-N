@@ -5,13 +5,20 @@ import {
     PAGE_LOADING_REQUEST,
     PAGE_LOAD_SUCCESS,
     PAGE_LOAD_ERROR,
-    GET_ARTICLES_REQUEST, GET_ARTICLES_SUCCESS, GET_ARTICLES_ERROR
+    GET_ARTICLES_REQUEST, GET_ARTICLES_SUCCESS, GET_ARTICLES_ERROR,
+    GET_ARTICLE_ID
 } from '../constants/api-constants'
 
-const initialState = {
+import {
+    INCREASE_COUNTER
+} from '../constants/utils-constants'
+
+let initialState = {
     STATE: 'S_INITIAL',
+    LIMIT: 10,
     isFetching: false,
-    articlesList: [],
+    articlesList: {},
+    id: '',
     currentPage: 1,
     quantityPages: 0
 }
@@ -31,7 +38,13 @@ let TRANSITION_GRAPH = {
         }),
         [GET_ARTICLES_ERROR]: {
             STATE: PAGE_LOAD_ERROR
-        }
+        },
+        [GET_ARTICLE_ID]: (state, action) => ({
+            id: action.id
+        }),
+        [INCREASE_COUNTER]: (state, action) => ({
+            currentPage: ++state.currentPage
+        }),
     }
 };
 

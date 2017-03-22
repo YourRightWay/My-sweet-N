@@ -56,12 +56,14 @@ const history = syncHistoryWithStore(browserHistory, mainStore);
 import Layout from './containers/Layout'; 
 import List from './containers/List'; 
 import Article from './containers/Article'; 
+import Contact from './containers/Contacts'; 
 
 ReactDOM.render( <Provider store={mainStore}>
     <Router onUpdate={() => window.scrollTo(0, 0)} history={history}>
         <Route path='/' component={Layout}>
             <IndexRoute component={List}/>
             <Route path='/article/:articleId' component={Article} />
+            <Route path='/contact' component={Contact} />
         </Route>
     </Router>
 </Provider>, document.getElementById('root'));

@@ -1,18 +1,19 @@
 import {
     GET_ARTICLES_REQUEST, GET_ARTICLES_SUCCESS, GET_ARTICLES_ERROR,
-    GET_ARTICLES_ID_REQUEST, GET_CHANNEL_ID_SUCCESS, GET_CHANNEL_ID_ERROR
+    GET_ARTICLE_ID
 } from '../constants/api-constants'
 
 import { ASYNC_DEBUGGER } from '../constants/utils-constants'
 
 import { callApi } from '../utils/call-api'
+import { parseId } from '../utils/parse-id'
 
 export function getArticles() {
     return function (dispatch, getState) {
 
         dispatch(GET_ARTICLES_REQUEST)
         
-        let url = '/api/get-articles?limit=10&page=1' 
+        let url = `/api/get-articles?limit=${getState().Articles.LIMIT}&page=${getState().Articles.currentPage}` 
         
         return callApi(url, {
             method: 'GET'
@@ -22,8 +23,8 @@ export function getArticles() {
             dispatch({
                 type: GET_ARTICLES_SUCCESS,
                 currentPage: result.page,
-                articlesList: result.articles,
-                quantityPages: result.pagesCount
+                articlesList: Object.assign({}, getState().Articles.articlesList, result.articles),
+                quantityPages: result.pageCounter
             })
             
         }).catch((error) => {
@@ -33,25 +34,14 @@ export function getArticles() {
     }
 }
 
-export function getArticlesId(id) {
+export function getArticlesId() {
     return function (dispatch, getState) {
+        
+        let id = parseId(getState().routing.locationBeforeTransitions.pathname)
 
-        dispatch(GET_ARTICLES_ID_REQUEST)
-
-        let url = `/api/get-articles-id?id=${id}`
-
-        return callApi(url, {
-            method: 'GET'
-        }).then((result) => {
-            dispatch({ type: ASYNC_DEBUGGER, url: url, response: result })
-
-            // dispatch({
-            //     type: GET_CHANNEL_ID_SUCCESS,
-            //     data: JSON.stringify(result)
-            // })
-
-        }).catch((error) => {
-            throw new Error(`${url} ${'\n'} ${error}`);
+        dispatch({
+            type: GET_ARTICLE_ID,
+            id
         })
 
     }

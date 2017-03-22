@@ -1,0 +1,21 @@
+.g-btn {
+  display: inline-block;
+  width: 100%;
+  text-decoration: none;
+  outline: none;
+  background: none;
+  border: none;
+  text-align: center;
+  touch-action: manipulation;
+  cursor: pointer;
+  position: relative;
+  @include user-select(none);
+  @include text($default-font, 14, em(38), 0.1rem, $default-color);
+  font-weight: 100;
+  text-transform: uppercase;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-orange {
+  border: 1px solid $default-color ;
+}

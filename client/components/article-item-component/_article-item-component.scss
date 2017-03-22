@@ -46,39 +46,6 @@
     }
   }
 
-  .article-item__sticker {
-    position: absolute;
-    width: 44px;
-    left: -15px;
-    top: 0;
-    height: auto;
-    background: $default-color;
-    z-index: 10;
-    text-align: center;
-
-    span.sticker-date {
-      @include text($default-font, em(26), normal, normal, #fff);
-      display: block;
-      margin-bottom: 6px;
-    }
-
-    span.sticker-other {
-      display: block;
-      transform: rotate(90deg);
-      position: relative;
-      margin-bottom: 48px;
-      text-align: left;
-      border-left: 1px solid #333;
-      padding-left: 6px;
-
-      span {
-        @include text($default-font, em(14), normal, normal, #fff);
-        display: block;
-        text-transform: uppercase;
-      }
-    }
-  }
-
   span.article-item__read {
     @include text($default-font, em(14), 36px, normal, $default-color);
     position: absolute;
@@ -87,5 +54,16 @@
     width: 160px;
     border: 1px solid $default-color;
     text-align: center;
+  }
+}
+
+.onload-article {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+
+  span.onload-article__text {
+    @include text($default-font, em(14), 54px, normal, $default-color);
+    display: block;
   }
 }

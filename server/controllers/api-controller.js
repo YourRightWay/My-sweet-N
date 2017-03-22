@@ -8,24 +8,6 @@ import * as ArticleList from '../models/article-list-model'
 // =========================================
 import * as Utils from '../utils/utils'
 
-// var htmlparser = require("htmlparser2");
-
-// var parser = new htmlparser.Parser({
-//     onopentag: function(name, attribs){
-//         console.log(name)
-//         console.log(attribs)
-//     },
-//     ontext: function(text){
-//         console.log(text);
-//     },
-//     onclosetag: function(tagname){
-//         console.log(tagname)
-//     }
-// }, {decodeEntities: true});
-//
-// parser.write('<p><span style="font-size: 22px;">Hola, amigo! Amigo, Hola!</span></p>');
-// parser.end();
-
 export const getArticleList = (req, res) => {
 
     let urlParts = url.parse(req.url, true);

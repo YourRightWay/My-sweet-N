@@ -4,12 +4,22 @@
 @import "styles/_typography";
 @import "styles/_default";
 
-// header
 
+// header
 @import "components/header-component/_header-component";
+
 
 // article
 @import "components/article-item-component/_article-item-component";
+@import "components/article-page-component/_article-page";
+
+
+// contact
+@import "components/contact-component/_contact-component";
+
 
 // system
 @import "components/system-components/ripple/_ripple";
+@import "components/system-components/image-loader/_image-loader";
+@import "components/system-components/button-component/_button";
+@import "components/system-components/sticker-component/_sticker-component";

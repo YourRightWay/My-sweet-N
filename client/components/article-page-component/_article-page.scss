@@ -1,0 +1,80 @@
+.article-content {
+  padding: 0;
+
+  .article-content__title {
+    margin-top: 36px;
+
+    span {
+      @include text($default-font, em(16), normal, normal, #000);
+      font-weight: 700;
+      display: block;
+      text-transform: uppercase;
+    }
+  }
+
+  .article-content__description {
+    margin-top: 12px;
+
+    span {
+      @include text($default-font, em(14), normal, normal, #000);
+      display: block;
+    }
+  }
+
+  .article-content__comments {
+    margin-top: 36px;
+
+    span.comments-quantity {
+      @include text($default-font, em(14), 36px, normal, #000);
+      display: block;
+    }
+  }
+
+  .comment-tree__block {
+    .comment-item {
+      position: relative;
+      padding: 12px 0;
+      border-bottom: 1px solid $default-color;
+
+      span {
+        display: block;
+      }
+
+      span.comment-item__author {
+        @include text($default-font, em(14), 36px, normal, #000);
+        font-weight: 700;
+      }
+
+      span.comment-item__text {
+        @include text($default-font, em(14), 36px, normal, #000);
+      }
+
+      span.comment-item__date {
+        @include text($default-font, em(14), normal, normal, #666);
+        text-align: right;
+      }
+
+      &:first-child {
+        padding-top: 0;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .children-comment {
+        margin: 12px 0 12px 24px;
+
+        .comment-item {
+          &:first-child {
+            padding-top: 0;
+          }
+
+          &:last-child {
+            border-bottom: none;
+          }
+        }
+      }
+    }
+  }
+}

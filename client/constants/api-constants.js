@@ -2,9 +2,8 @@ export const GET_ARTICLES_REQUEST = 'GET_ARTICLES_REQUEST';
 export const GET_ARTICLES_SUCCESS = 'GET_ARTICLES_SUCCESS';
 export const GET_ARTICLES_ERROR = 'GET_ARTICLES_ERROR';
 
-export const GET_ARTICLES_ID_REQUEST = 'GET_ARTICLES_ID_REQUEST';
-export const GET_CHANNEL_ID_SUCCESS = 'GET_CHANNEL_ID_SUCCESS';
-export const GET_CHANNEL_ID_ERROR = 'GET_CHANNEL_ID_ERROR';
+export const GET_ARTICLE_ID = 'GET_ARTICLE_ID';
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Reducer states

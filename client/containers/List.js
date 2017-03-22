@@ -8,54 +8,43 @@ import { connect } from 'react-redux'
 // =========================================
 import * as apiAction from '../actions/api-action'
 import * as routingAction from '../actions/routing-action'
+import * as staticAction from '../actions/static-action'
 
 
 // =========================================
 // components
 // =========================================
 import Article from '../components/article-item-component/article-item-component'
-
+import Button from '../components/system-components/button-component/button-component'
 
 class List extends Component {
-
-    constructor() {
-        super()
-        this.state = {
-            img: [
-                'https://pp.userapi.com/c626919/v626919551/3eeec/u4PYNHVVzv0.jpg',
-                'https://pp.userapi.com/c638525/v638525094/27c75/oEl5q67tDIQ.jpg',
-                'https://pp.userapi.com/c543106/v543106747/4f880/VdKmvlQ5J2I.jpg',
-                'https://pp.userapi.com/c543106/v543106747/4f862/MP_UbvHjBp8.jpg',
-                'https://pp.userapi.com/c637316/v637316410/33846/hH_UdgR6bhw.jpg',
-                'https://pp.userapi.com/c837533/v837533132/1ef37/LlRY-n0Btoo.jpg',
-                'https://pp.userapi.com/c543106/v543106148/28d09/zGbAqudat-E.jpg',
-                'https://pp.userapi.com/c626920/v626920534/39ca2/jZ75e1FUZAU.jpg',
-                'https://pp.userapi.com/c637723/v637723324/2fc74/YM07izwZcsk.jpg',
-                'https://pp.userapi.com/c836524/v836524468/20f72/wasKRzjOMPU.jpg'
-            ]
-        }
-    }
-
     routeTo (url, e) {
         e.preventDefault();
 
         let { routeTo } = this.props.routingAction;
         routeTo(url)
     }
+    
+    onloadArticles() {
+        let { increaseCounter } = this.props.staticAction;
+        increaseCounter();
+
+        let { getArticles } = this.props.apiAction;
+        getArticles()
+    }
 
     render() {
         
-        let { articlesList } = this.props.articlesList;
-        let { img } = this.state;
-        
-        let createArticleList = articlesList.map((data, index) => (
-            <Article key={data._id}
-                     url={data._id}
-                     imagePath={img[index]}
-                     articleDate={data.dateCreated}
-                     title={data.title}
-                     text={data.body.hasOwnProperty('text') ? data.body.text : 'Description not found'}
-                     routeTo={(e) => this.routeTo(`/article/${data._id}`, e)}/>
+        let { articlesList, quantityPages, currentPage } = this.props.articlesList;
+
+        let createArticleList = Object.keys(articlesList).map((data, index) => (
+                <Article key={articlesList[data]._id}
+                         url={articlesList[data]._id}
+                         imagePath={articlesList[data].image}
+                         articleDate={articlesList[data].dateCreated}
+                         title={articlesList[data].title}
+                         text={articlesList[data].body.hasOwnProperty('text') ? articlesList[data].body.text : 'Description not found'}
+                         routeTo={(e) => this.routeTo(`/article/${articlesList[data]._id}`, e)}/>
         ))
         
         return (
@@ -63,9 +52,24 @@ class List extends Component {
                 <div className="col-lg-10 col-md-10 col-sm-8 col-xs-10">
                     {createArticleList}
                 </div>
-                <div className="col-lg-2 col-md-2 col-sm-4 col-xs-2">
-                    <h1>hello list</h1>
+                <div className="col-lg-2 col-md-2 col-sm-4 col-xs-2 contact-block">
+                    <a href="/contact" onClick={ (e) => this.routeTo('/contact', e) }>
+                        <span>Contacts</span>
+                    </a>
                 </div>
+                {
+                    quantityPages === currentPage ?
+                        <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 onload-article">
+                            <span className="onload-article__text">No more results</span>
+                        </div> :  
+                        <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 onload-article">
+                            <Button btnClick={ ::this.onloadArticles }
+                                    btnText={ false ? 'Loading..' : 'load more' }
+                                    btnStyle="btn-orange"
+                                    fetchStatus={ false }/>
+                        </div>
+                }
+               
             </div>
         );
     }
@@ -80,6 +84,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         apiAction: bindActionCreators(apiAction, dispatch),
+        staticAction: bindActionCreators(staticAction, dispatch),
         routingAction: bindActionCreators(routingAction, dispatch)
     }
 }

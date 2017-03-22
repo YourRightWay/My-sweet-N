@@ -1,0 +1,32 @@
+.article-item__sticker {
+  position: absolute;
+  width: 44px;
+  left: -15px;
+  top: 0;
+  height: auto;
+  background: $default-color;
+  z-index: 9999;
+  text-align: center;
+
+  span.sticker-date {
+    @include text($default-font, em(26), normal, normal, #fff);
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  span.sticker-other {
+    display: block;
+    transform: rotate(90deg);
+    position: relative;
+    margin-bottom: 48px;
+    text-align: left;
+    border-left: 1px solid #333;
+    padding-left: 6px;
+
+    span {
+      @include text($default-font, em(14), normal, normal, #fff);
+      display: block;
+      text-transform: uppercase;
+    }
+  }
+}

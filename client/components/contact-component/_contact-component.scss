@@ -1,0 +1,24 @@
+.contact-block {
+  text-align: center;
+
+  a {
+    span {
+      @include text($default-font, em(14), 36px, normal, $default-color);
+      width: 160px;
+      border: 1px solid $default-color;
+      text-align: center;
+      display: block;
+    }
+  }
+}
+
+.contact-container {
+  a {
+    display: block;
+    span {
+      @include text($default-font, em(16), normal, normal, #333);
+      display: block;
+    }
+  }
+}
+

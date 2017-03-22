@@ -10,6 +10,10 @@ router.get('/article/:id', function(req, res, next) {
     res.render('index');
 });
 
+router.get('/contact', function(req, res, next) {
+    res.render('index');
+});
+
 router.get('/api/get-articles', ApiController.getArticleList);
 router.get('/api/get-articles-id', ApiController.getArticleId);
 

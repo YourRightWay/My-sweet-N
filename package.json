@@ -8,7 +8,7 @@
     "unix_client": "NODE_ENV=development webpack --config webpack.config.babel.js --colors --progress",
     "production": "set NODE_ENV=production && webpack --config webpack.production.config.babel.js --colors --progress",
     "unix_production": "NODE_ENV=production webpack --config webpack.production.config.babel.js --colors --progress",
-    "server": "nodemon --exec babel-node server.js",
+    "server": "babel-node server.js",
     "start": "concurrently --kill-others \"npm run client\" \"npm run server\"",
     "unix_start": "concurrently --kill-others \"npm run unix_client\" \"npm run server\"",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -38,6 +38,7 @@
     "express": "^4.15.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
+    "htmlparser2": "^3.9.2",
     "jade": "^1.11.0",
     "morgan": "^1.8.1",
     "node-sass": "^3.10.1",

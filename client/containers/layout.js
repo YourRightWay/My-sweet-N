@@ -12,11 +12,6 @@ class Layout extends Component {
         let { getArticles } = this.props.apiAction;
         getArticles()
     }
-
-    getArticlesId() {
-        let { getArticlesId } = this.props.apiAction;
-        getArticlesId('58b00c9e7a9e1f010e90b787')
-    }
     
     render() {
         return (
