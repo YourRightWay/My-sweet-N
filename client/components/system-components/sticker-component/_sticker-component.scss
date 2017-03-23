@@ -1,7 +1,7 @@
 .article-item__sticker {
   position: absolute;
-  width: 44px;
-  left: -15px;
+  width: em(44);
+  left: em(-12);
   top: 0;
   height: auto;
   background: $default-color;
@@ -11,14 +11,14 @@
   span.sticker-date {
     @include text($default-font, em(26), normal, normal, #fff);
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: em(6);
   }
 
   span.sticker-other {
     display: block;
     transform: rotate(90deg);
     position: relative;
-    margin-bottom: 48px;
+    margin-bottom: em(48);
     text-align: left;
     border-left: 1px solid #333;
     padding-left: 6px;

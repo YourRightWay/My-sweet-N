@@ -1,0 +1,23 @@
+.form-group {
+  position: relative;
+
+  label.g-label {
+    display: block;
+    @include text($default-font, em(14), normal, normal, #000);
+    padding-bottom: 6px;
+  }
+
+  input.g-inp, textarea.g-inp {
+    outline: none;
+    background: none;
+    display: inline-block;
+    width: 100%;
+    vertical-align: middle;
+    padding-left: 12px;
+    -webkit-tap-highlight-color: transparent;
+    border: none;
+    height: 48px;
+    position: relative;
+    border: 1px solid $default-color;
+  }
+}

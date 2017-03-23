@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import Header from '../components/header-component/header-component'
+import ValidateComponent from '../components/system-components/validate-component/validate'
 
 import * as apiAction from '../actions/api-action'
 
@@ -14,10 +15,13 @@ class Layout extends Component {
     }
     
     render() {
+        let { validateText, validateNotify } = this.props.validate;
+
         return (
             <div>
                 <Header />
-                <div className="container container-offset ">
+                <ValidateComponent status={validateNotify} text={validateText}/>
+                <div className="container">
                     { this.props.children }
                 </div>
             </div>
@@ -27,7 +31,7 @@ class Layout extends Component {
 
 function mapStateToProps(state) {
     return {
-       
+        validate: state.Validate
     }
 }
 

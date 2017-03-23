@@ -5,7 +5,12 @@ import {
     PAGE_LOADING_REQUEST,
     PAGE_LOAD_SUCCESS,
     PAGE_LOAD_ERROR,
+    SEND_COMMENT_FETCHING,
+    SEND_COMMENT_DONE,
+    SEND_COMMENT_ERR,
+
     GET_ARTICLES_REQUEST, GET_ARTICLES_SUCCESS, GET_ARTICLES_ERROR,
+    SEND_COMMENT_REQUEST, SEND_COMMENT_SUCCESS, SEND_COMMENT_ERROR,
     GET_ARTICLE_ID
 } from '../constants/api-constants'
 
@@ -45,6 +50,9 @@ let TRANSITION_GRAPH = {
         [INCREASE_COUNTER]: (state, action) => ({
             currentPage: ++state.currentPage
         }),
+        [SEND_COMMENT_SUCCESS]: (state, action) => ({
+            articlesList: Object.assign({}, state.articlesList, state.articlesList[state.id].comments.push(action.result))
+        })
     }
 };
 

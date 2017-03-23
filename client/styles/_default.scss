@@ -51,8 +51,12 @@ textarea {
   box-sizing: border-box;
 }
 
-.container-offset {
-  padding-top: 36px;
+.container {
+  max-width: em(1280);
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+  padding: em(36) em(24) 0 em(24);
 }
 
 

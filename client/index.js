@@ -22,6 +22,7 @@ import createLogger from 'redux-logger'
 import thunk from 'redux-thunk'
 import PureActionMiddleware from './middleware/pure-action-middleware'
 import DebuggerMiddleware from './middleware/debug-middleware'
+import ValidateMiddleware from './middleware/validate-middleware'
 
 
 // =========================================
@@ -39,8 +40,9 @@ const mainStore = (function configureMainStore(initialState) {
                 thunk,
                 logger,
                 PureActionMiddleware,
-                DebuggerMiddleware
-            ) : applyMiddleware(thunk, PureActionMiddleware)
+                DebuggerMiddleware,
+                ValidateMiddleware
+            ) : applyMiddleware(thunk, PureActionMiddleware, ValidateMiddleware)
         )
     );
 

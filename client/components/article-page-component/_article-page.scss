@@ -1,8 +1,8 @@
-.article-content {
+.article-list {
   padding: 0;
 
   .article-content__title {
-    margin-top: 36px;
+    margin-top: $x4;
 
     span {
       @include text($default-font, em(16), normal, normal, #000);
@@ -13,7 +13,7 @@
   }
 
   .article-content__description {
-    margin-top: 12px;
+    margin-top: $x2;
 
     span {
       @include text($default-font, em(14), normal, normal, #000);
@@ -22,7 +22,7 @@
   }
 
   .article-content__comments {
-    margin-top: 36px;
+    margin-top: $x4;
 
     span.comments-quantity {
       @include text($default-font, em(14), 36px, normal, #000);
@@ -33,7 +33,7 @@
   .comment-tree__block {
     .comment-item {
       position: relative;
-      padding: 12px 0;
+      padding: $x2 0;
       border-bottom: 1px solid $default-color;
 
       span {
@@ -63,7 +63,7 @@
       }
 
       .children-comment {
-        margin: 12px 0 12px 24px;
+        margin: $x2 0 $x2 $x3;
 
         .comment-item {
           &:first-child {
@@ -74,6 +74,33 @@
             border-bottom: none;
           }
         }
+      }
+    }
+  }
+
+  .article-content__comments-form {
+    .form-group {
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .form-group--left, .form-group--right{
+      width: 50%;
+    }
+
+    .form-group--left {
+      padding-right: 12px;
+    }
+
+    .form-group--right {
+      padding-left: 12px;
+    }
+
+    .form-group--comment {
+      width: 100%;
+
+      textarea {
+        min-height: 120px;
       }
     }
   }

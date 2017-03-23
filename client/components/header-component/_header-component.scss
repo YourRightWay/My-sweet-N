@@ -1,6 +1,10 @@
 header.header {
   background: $default-color;
 
+  .container {
+    padding: 0 12px;
+  }
+
   span {
     @include text($default-font, em(24), 54px, normal, #fff);
     display: block;

@@ -49,20 +49,20 @@ class List extends Component {
         
         return (
             <div>
-                <div className="col-lg-10 col-md-10 col-sm-8 col-xs-10">
+                <div className="article-list">
                     {createArticleList}
                 </div>
-                <div className="col-lg-2 col-md-2 col-sm-4 col-xs-2 contact-block">
+                <div className="contact-block">
                     <a href="/contact" onClick={ (e) => this.routeTo('/contact', e) }>
                         <span>Contacts</span>
                     </a>
                 </div>
                 {
                     quantityPages === currentPage ?
-                        <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 onload-article">
+                        <div className="onload-article">
                             <span className="onload-article__text">No more results</span>
                         </div> :  
-                        <div className="col-lg-12 col-md-12 col-sm-12 col-xs-12 onload-article">
+                        <div className="onload-article">
                             <Button btnClick={ ::this.onloadArticles }
                                     btnText={ false ? 'Loading..' : 'load more' }
                                     btnStyle="btn-orange"

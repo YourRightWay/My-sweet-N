@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 // =========================================
@@ -6,12 +7,19 @@ import { connect } from 'react-redux'
 // =========================================
 import ImageLoader from '../../components/system-components/image-loader/image-loader'
 import Sticker from '../../components/system-components/sticker-component/sticker-component'
-
+import Button from '../../components/system-components/button-component/button-component'
 
 // =========================================
 // utils
 // =========================================
 import i from '../../decorators/inject'
+
+
+// =========================================
+// action
+// =========================================
+import * as apiAction from '../../actions/api-action'
+
 
 
 // =========================================
@@ -33,6 +41,24 @@ class CommentItem extends Component {
 
 
 class ArticleContent extends Component {
+
+    sendPostForm(e) {
+        e.preventDefault();
+        
+        var userName = this.refs.userName;
+        var userNameValue = userName.value;
+        
+        var userEmail = this.refs.userEmail;
+        var userEmailValue = userEmail.value;
+        
+        var userComment = this.refs.userComment;
+        var userCommentValue = userComment.value;
+        
+        let { sendCommentForm } = this.props.apiAction;
+        sendCommentForm(userNameValue, userEmailValue, userCommentValue)
+
+    }
+
     render() {
 
         let { articlesList, id } = this.props.articlesList;
@@ -60,7 +86,7 @@ class ArticleContent extends Component {
         ))
         
         return (
-            <div className="col-lg-10 col-md-10 col-sm-8 col-xs-10 article-content">
+            <div className="article-list">
                 <Sticker day={articlesList[id].dateCreated.number}
                          month={articlesList[id].dateCreated.month}
                          year={articlesList[id].dateCreated.year}/>
@@ -83,7 +109,33 @@ class ArticleContent extends Component {
                     <div className="comment-tree__block">
                         {createCommentList}
                     </div>
-                   
+                </div>
+                
+                <div className="article-content__comments-form">
+
+                    <form action="">
+                        <div className="form-group form-group--left">
+                            <label htmlFor='userName' className='g-label'>Your name</label>
+                            <input type='text' id='userName' ref="userName" className='g-inp' placeholder="Enter your name"/>
+                        </div>
+
+                        <div className="form-group form-group--right">
+                            <label htmlFor='userEmail'  className='g-label'>Your email</label>
+                            <input type='text' ref="userEmail" id='userEmail' className='g-inp' placeholder="Enter your email"/>
+                        </div>
+
+                        <div className="form-group form-group--comment">
+                            <textarea name="" id="" cols="30" rows="10" ref="userComment" className='g-inp'>
+                        
+                            </textarea>
+                        </div>
+
+                        <Button btnClick={ ::this.sendPostForm }
+                                btnText={ false ? 'Loading..' : 'SEND COMMENT' }
+                                btnStyle="btn-orange"
+                                type="submit"
+                                fetchStatus={ false }/>
+                    </form>
                 </div>
             </div>
         );
@@ -98,7 +150,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        
+        apiAction: bindActionCreators(apiAction, dispatch)
     }
 }
 
