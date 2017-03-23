@@ -42,7 +42,7 @@ const mainStore = (function configureMainStore(initialState) {
                 PureActionMiddleware,
                 DebuggerMiddleware,
                 ValidateMiddleware
-            ) : applyMiddleware(thunk, PureActionMiddleware, ValidateMiddleware)
+            ): applyMiddleware(thunk, PureActionMiddleware, ValidateMiddleware)
         )
     );
 

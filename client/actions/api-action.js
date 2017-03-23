@@ -83,10 +83,10 @@ export function sendCommentForm(name, email, text) {
             return callApi('http://api.blog.dev.singree.com/comment/', {
                 method: 'POST',
                 body: JSON.stringify({
-                    "articleId": getState().Articles.id,
-                    "text": text,
-                    "author": getState().Articles.id,
-                    "authorName": name
+                    'articleId': getState().Articles.id,
+                    'text': text,
+                    'author': getState().Articles.id,
+                    'authorName': name
                 })
             }).then((result) => {
                 dispatch({ type: ASYNC_DEBUGGER, url: 'http://api.blog.dev.singree.com/comment/', response: result })

@@ -12,7 +12,7 @@ export default function createActionGraphReducer(initial_state, transition_graph
 
         let transition_map = transition_graph[initial_state.STATE];
 
-        if (!transition_map) throw new Error("Transition graph is nor exist for your state: " + state.STATE);
+        if (!transition_map) throw new Error('Transition graph is nor exist for your state: ' + state.STATE);
         let handler;
         if (action.type in transition_map) {
             
@@ -21,17 +21,17 @@ export default function createActionGraphReducer(initial_state, transition_graph
         }
 
         switch (typeof handler) {
-            case "undefined":
+            case 'undefined':
                 if (KNOWN_ACTIONS.indexOf(action.type) != -1) {
                     try {
                         console.error(`Event ${action.type} not support for your state ${state.STATE}.`)
                     } catch(e) {}
                 }
                 break;
-            case "function":
+            case 'function':
                 state = Object.assign({}, state, handler(state, action));
                 break;
-            case "object":
+            case 'object':
                 if (handler !== null) {
                     state = Object.assign({}, state, handler);
                 }

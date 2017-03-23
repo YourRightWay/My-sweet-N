@@ -34,7 +34,7 @@ class Article extends Component {
         
         return (
             <div>
-                { STATE === "PAGE_LOAD_SUCCESS" ? <ArticleContent /> : '' }
+                { STATE === 'PAGE_LOAD_SUCCESS' ? <ArticleContent /> : '' }
                 <div className="col-lg-2 col-md-2 col-sm-4 col-xs-2 contact-block">
                     <a href="/contact" onClick={ (e) => this.routeTo('/contact', e) }>
                         <span>Contacts</span>

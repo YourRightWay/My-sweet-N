@@ -6,7 +6,7 @@ import classNames from 'classnames'
 export default class Btn extends React.Component {
 
     static defaultProps = {
-        btnClass: "g-btn btn-ripple",
+        btnClass: 'g-btn btn-ripple',
         spinner: true
     }
 

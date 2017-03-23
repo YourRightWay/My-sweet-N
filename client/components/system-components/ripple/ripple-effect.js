@@ -60,11 +60,11 @@ export default class Ripple extends React.Component {
     render () {
 
         return (
-            <div className={"ripple-element " + (this.state.animate ? "is-reppling" : "")} ref="ripple" style={{
-              top: this.state.top+"px",
-              left: this.state.left+"px",
-              width: this.state.width+"px",
-              height: this.state.height+"px"
+            <div className={'ripple-element ' + (this.state.animate ? 'is-reppling' : '')} ref="ripple" style={{
+              top: this.state.top+'px',
+              left: this.state.left+'px',
+              width: this.state.width+'px',
+              height: this.state.height+'px'
             }}></div>
         )
     }

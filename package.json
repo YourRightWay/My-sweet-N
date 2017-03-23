@@ -11,7 +11,8 @@
     "server": "babel-node server.js",
     "start": "concurrently --kill-others \"npm run client\" \"npm run server\"",
     "unix_start": "concurrently --kill-others \"npm run unix_client\" \"npm run server\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint client"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
   "dependencies": {
     "autoprefixer": "^6.5.1",
     "babel-core": "^6.8.0",
+    "babel-eslint": "^7.2.0",
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-polyfill": "^6.13.0",
@@ -35,6 +37,8 @@
     "classnames": "^2.2.5",
     "cookie-parser": "^1.4.3",
     "css-loader": "^0.25.0",
+    "eslint": "^3.18.0",
+    "eslint-plugin-react": "^6.10.3",
     "express": "^4.15.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
