@@ -56,9 +56,9 @@ const mainStore = (function configureMainStore(initialState) {
 const history = syncHistoryWithStore(browserHistory, mainStore);
 
 import Layout from './containers/layout'; 
-import List from './containers/list'; 
-import Article from './containers/article';  
-import Contact from './containers/contacts'; 
+import List from './containers/List'; 
+import Article from './containers/Article';  
+import Contact from './containers/Contacts'; 
 
 ReactDOM.render( <Provider store={mainStore}>
     <Router onUpdate={() => window.scrollTo(0, 0)} history={history}>
