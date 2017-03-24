@@ -4,13 +4,10 @@
   "description": "",
   "main": "test.js",
   "scripts": {
-    "client": "set NODE_ENV=development && webpack --config webpack.config.babel.js --colors --progress",
-    "unix_client": "NODE_ENV=development webpack --config webpack.config.babel.js --colors --progress",
+    "start": "node_modules/.bin/concurrent --kill-others \"npm run client\" \"npm run server\"",
+    "client": "set NODE_ENV=development && NODE_ENV=development && webpack --config webpack.config.babel.js --colors --progress",
     "production": "set NODE_ENV=production && webpack --config webpack.production.config.babel.js --colors --progress",
-    "unix_production": "NODE_ENV=production webpack --config webpack.production.config.babel.js --colors --progress",
     "server": "babel-node server.js",
-    "start": "concurrently --kill-others \"npm run client\" \"npm run server\"",
-    "unix_start": "concurrently --kill-others \"npm run unix_client\" \"npm run server\"",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint client"
   },
