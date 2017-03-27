@@ -37,7 +37,7 @@ export default function createActionGraphReducer(initial_state, transition_graph
                 }
                 break;
             default:
-                throw new Error(`Transition graph is configure incorrect  ${action.type}@${state.STATE}`);
+                throw new Error(`Transition graph is configured incorrect  ${action.type}@${state.STATE}`);
         }
 
         return state;

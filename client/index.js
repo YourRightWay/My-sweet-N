@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 // REDUX
 // =========================================
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import rootReducer from './reducers/app-reducer'
 
 // =========================================
@@ -28,39 +28,32 @@ import ValidateMiddleware from './middleware/validate-middleware'
 // =========================================
 // CREATE STORE
 // =========================================
-const mainStore = (function configureMainStore(initialState) {
-
-    const logger = createLogger();
-
-    const store = createStore(
+const appStore = (function(initialState) {
+    
+    let middlewares = [PureActionMiddleware, thunk, ValidateMiddleware];
+    
+    if(__DEVELOPMENT__) {
+        middlewares.push(createLogger(), DebuggerMiddleware)
+    }
+    
+    return createStore(
         rootReducer,
         initialState,
-        compose(
-            __DEVELOPMENT__ ? applyMiddleware(
-                thunk,
-                logger,
-                PureActionMiddleware,
-                DebuggerMiddleware,
-                ValidateMiddleware
-            ): applyMiddleware(thunk, PureActionMiddleware, ValidateMiddleware)
-        )
-    );
-
-    return store
-
+        applyMiddleware.apply(null, middlewares)
+    )
 })();
 
 // =========================================
 // REDUX SYNC ROUTER
 // =========================================
-const history = syncHistoryWithStore(browserHistory, mainStore);
+const history = syncHistoryWithStore(browserHistory, appStore);
 
 import Layout from './containers/layout'; 
 import List from './containers/List'; 
 import Article from './containers/Article';  
 import Contact from './containers/Contacts'; 
 
-ReactDOM.render( <Provider store={mainStore}>
+ReactDOM.render( <Provider store={appStore}>
     <Router onUpdate={() => window.scrollTo(0, 0)} history={history}>
         <Route path='/' component={Layout}>
             <IndexRoute component={List}/>
