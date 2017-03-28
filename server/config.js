@@ -2,11 +2,7 @@ const CONFIG = {
         apiPrefix: "http://localhost:8080",
         db: 'mongodb://localhost/mongodb/data/db',
         port: 8080,
-        db: {
-                name: 'mongodb/data/db',
-                host: "localhost",
-                port: 27017
-        }
+        pathToBackend: 'http://api.blog.dev.singree.com'
 }
 
 export default CONFIG

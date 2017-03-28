@@ -11,7 +11,8 @@
     "server": "babel-node server.js",
     "start": "concurrently --kill-others \"npm run client\" \"npm run server\"",
     "unix_start": "concurrently --kill-others \"npm run unix_client\" \"npm run server\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha --compilers js:babel-core/register --require ./test/test-helper.spec.js --reporter spec client/**/**/**/*.spec.js",
+    "test:watch": "npm run test -- --watch",
     "lint": "eslint client"
   },
   "repository": {
@@ -34,6 +35,7 @@
     "body-parser": "^1.17.0",
     "browser-sync": "^2.18.8",
     "browser-sync-webpack-plugin": "^1.1.4",
+    "chai-immutable": "^1.6.0",
     "classnames": "^2.2.5",
     "cookie-parser": "^1.4.3",
     "css-loader": "^0.25.0",
@@ -43,6 +45,7 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "htmlparser2": "^3.9.2",
+    "immutable": "^3.8.1",
     "jade": "^1.11.0",
     "morgan": "^1.8.1",
     "node-sass": "^3.10.1",
@@ -70,6 +73,9 @@
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
-    "concurrently": "^3.4.0"
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "concurrently": "^3.4.0",
+    "mocha": "^3.2.0"
   }
 }

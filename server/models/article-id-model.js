@@ -1,12 +1,12 @@
 import request from 'request'
-import { API } from '../api/api'
+import config from '../config'
 
 export const getArticleInfo = (params) => {
     return new Promise(function(resolve, reject) {
         try {
             console.log('resolve parseFeed')
 
-            request(`${API}/${params.id}`, function (error, response, body) {
+            request(`${config.pathToBackend}/${params.id}`, function (error, response, body) {
                 if(error) throw error
                 resolve(body)
             });

@@ -14,7 +14,6 @@ const LIVE_CYCLE = process.env.npm_lifecycle_event
 console.log(`Your lifecycle event: ${LIVE_CYCLE}`)
 console.log(`Your process.env: ${ENV}`)
 
-
 export default {
 
     entry: [
@@ -24,7 +23,7 @@ export default {
     output: {
         path: path.join(__dirname, "./dist"),
         filename: 'bundle.js',
-        publickPath: '/dist/'
+        publicPath: '/dist/'
     },
 
     watch: true,
